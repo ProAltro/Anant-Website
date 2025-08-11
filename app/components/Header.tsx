@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useLocation } from 'react-router';
 
 const Header = () => {
@@ -16,6 +16,26 @@ const Header = () => {
     }
     setMobileOpen(false);
   };
+
+  // Lock body scroll and allow ESC to close when mobile menu is open
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      const originalOverflow = document.body.style.overflow;
+      const onKey = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') setMobileOpen(false);
+      };
+      if (mobileOpen) {
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('keydown', onKey);
+      } else {
+        document.body.style.overflow = originalOverflow || '';
+      }
+      return () => {
+        document.body.style.overflow = originalOverflow || '';
+        window.removeEventListener('keydown', onKey);
+      };
+    }
+  }, [mobileOpen]);
 
   return (
   <header className="fixed top-0 left-0 right-0 z-[100] glass-nav nav-accented h-14 md:h-16">
@@ -67,7 +87,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-anant-accent-light hover:text-white bg-anant-accent/20 hover:bg-anant-accent/30 border border-anant-accent/40 rounded-xl p-2 transition-colors shadow-glow"
+            className="md:hidden text-white hover:text-white bg-black/50 hover:bg-black/70 border border-white/15 rounded-xl p-2 transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -87,12 +107,20 @@ const Header = () => {
 
         {/* Mobile Menu Panel */}
         {mobileOpen && (
-          <div id="mobile-menu" className="md:hidden mt-2 sleek-container rounded-2xl overflow-hidden">
-            <div className="p-3 divide-y divide-white/10">
+          <div className="md:hidden fixed inset-0 z-[95]" aria-modal="true" role="dialog">
+            {/* Backdrop */}
+            <button
+              className="absolute inset-0 bg-black/80"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Close menu"
+            />
+            {/* Panel */}
+            <div id="mobile-menu" className="absolute top-16 left-0 right-0 mx-3 rounded-2xl overflow-hidden bg-black border border-white/10 shadow-2xl">
+              <div className="p-3 divide-y divide-white/10 max-h-[70vh] overflow-y-auto">
               <Link to="/#hero" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Home</Link>
               <Link to="/#about" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">About</Link>
               <button
-                className="w-full text-left px-4 py-3.5 text-white hover:bg-white/5 rounded-lg flex items-center justify-between text-base"
+                className="w-full text-left px-4 py-3.5 text-white hover:bg-white/10 rounded-lg flex items-center justify-between text-base"
                 onClick={() => setSubsOpen((v) => !v)}
                 aria-expanded={subsOpen}
               >
@@ -103,17 +131,18 @@ const Header = () => {
               </button>
               {subsOpen && (
                 <div className="px-2 pb-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-                  <Link to="/subsystems/eps" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">EPS</Link>
-                  <Link to="/subsystems/obc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">OBC</Link>
-                  <Link to="/subsystems/ttc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">TTC</Link>
-                  <Link to="/subsystems/adcs" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">ADCS</Link>
-                  <Link to="/subsystems/sts" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">STS</Link>
-                  <Link to="/subsystems/payload" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">Payload</Link>
+                  <Link to="/subsystems/eps" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">EPS</Link>
+                  <Link to="/subsystems/obc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">OBC</Link>
+                  <Link to="/subsystems/ttc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">TTC</Link>
+                  <Link to="/subsystems/adcs" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">ADCS</Link>
+                  <Link to="/subsystems/sts" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">STS</Link>
+                  <Link to="/subsystems/payload" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/10 rounded-md text-base">Payload</Link>
                 </div>
               )}
-              <Link to="/#team" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Team</Link>
-              <Link to="/#publications" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Publications</Link>
-              <Link to="/#contact" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Contact</Link>
+              <Link to="/#team" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/10 rounded-lg text-base">Team</Link>
+              <Link to="/#publications" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/10 rounded-lg text-base">Publications</Link>
+              <Link to="/#contact" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/10 rounded-lg text-base">Contact</Link>
+              </div>
             </div>
           </div>
         )}

@@ -78,9 +78,10 @@ const Publications = () => {
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6 text-anant-pure">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 title-caps title-gradient font-heading inline-block">
               Publications
             </h2>
+            <div className="title-underline mb-10"></div>
             <p className="text-xl text-anant-mild max-w-3xl mx-auto">
               Our research contributions to the field of nanosatellite technology and space systems
             </p>

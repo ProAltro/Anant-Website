@@ -6,9 +6,12 @@ const About = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-4 metallic-text">About</h2>
-            <div className="metallic-divider w-16 mx-auto mb-5"></div>
+      <div className="text-center mb-10">
+        <h2 className="text-4xl md:text-6xl font-bold mb-2 title-caps title-gradient font-heading inline-block">
+                Team Anant
+              </h2>
+        <div className="title-underline mb-6"></div>
+        <div className="h-px w-16 mx-auto mb-5 bg-white/10"></div>
             <p className="text-anant-mild text-base md:text-lg max-w-2xl mx-auto">
               Team Anant is BITS Pilani’s student satellite team building a compact imaging CubeSat.
             </p>

@@ -697,3 +697,47 @@ body {
   border-color: rgba(93, 228, 255, 0.45);
   box-shadow: 0 0 0 2px rgba(93, 228, 255, 0.25), inset 0 0 0 1px rgba(93, 228, 255, 0.2);
 }
+
+/* --- RVSAT-inspired title styles --- */
+.title-caps {
+  text-transform: uppercase;
+  letter-spacing: 0.12em; /* slightly tighter for better readability at large sizes */
+}
+.title-gradient {
+  display: inline-block;
+  background-image: linear-gradient(90deg, #bdf3ff 0%, #66eaff 35%, #33d4ff 65%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+} 
+/* Heading font utility */
+.font-heading {
+  font-family: 'Orbitron', 'Poppins', 'Montserrat', ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+}
+.hero-title-xl {
+  font-size: clamp(2.75rem, 6vw + 1rem, 5rem);
+  line-height: 1.05;
+}
+.title-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: #c9f4ff;
+  opacity: 0.9;
+}
+.title-kicker::before {
+  content: "";
+  width: 11px; height: 11px;
+  background: url('/external/rvsat/assets/img/universe/shapes/star.svg') center/cover no-repeat;
+  filter: drop-shadow(0 0 6px rgba(102, 234, 255, 0.35));
+}
+.title-underline {
+  height: 2px;
+  width: 120px;
+  margin: 10px auto 0;
+  background-image: linear-gradient(90deg, #66eaff 0%, #33d4ff 60%, #0ea5e9 100%);
+}

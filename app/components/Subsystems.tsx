@@ -106,10 +106,11 @@ const Subsystems = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-semibold font-poppins mb-3 text-anant-pure">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 title-caps title-gradient font-heading inline-block">
               Subsystems
             </h2>
+            <div className="title-underline mx-auto mb-8"></div>
             <p className="text-base text-anant-mild max-w-2xl mx-auto">
               Core systems engineered for our mission
             </p>

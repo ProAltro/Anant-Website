@@ -113,6 +113,49 @@ const Team = () => {
     ]
   };
 
+  // Subsystem-specific styling accents for leads
+  const getSubsystemStyle = (name: string) => {
+    const map: Record<string, { ring: string; text: string; badgeBg: string; glow: string }> = {
+      'Attitude Determination and Control System': {
+        ring: 'ring-purple-400/60',
+        text: 'text-purple-300',
+        badgeBg: 'bg-purple-500/15',
+        glow: 'shadow-purple-500/20',
+      },
+      'Electrical Power System': {
+        ring: 'ring-lime-400/60',
+        text: 'text-lime-300',
+        badgeBg: 'bg-lime-500/15',
+        glow: 'shadow-lime-500/20',
+      },
+      'On Board Computer System': {
+        ring: 'ring-sky-400/60',
+        text: 'text-sky-300',
+        badgeBg: 'bg-sky-500/15',
+        glow: 'shadow-sky-500/20',
+      },
+      'Payload Subsystem': {
+        ring: 'ring-pink-400/60',
+        text: 'text-pink-300',
+        badgeBg: 'bg-pink-500/15',
+        glow: 'shadow-pink-500/20',
+      },
+      'Structural and Thermal Subsystem': {
+        ring: 'ring-amber-400/60',
+        text: 'text-amber-300',
+        badgeBg: 'bg-amber-500/15',
+        glow: 'shadow-amber-500/20',
+      },
+      'Telemetry, Tracking and Command Subsystem': {
+        ring: 'ring-teal-400/60',
+        text: 'text-teal-300',
+        badgeBg: 'bg-teal-500/15',
+        glow: 'shadow-teal-500/20',
+      },
+    };
+    return map[name] || { ring: 'ring-cyan-400/60', text: 'text-cyan-300', badgeBg: 'bg-cyan-500/15', glow: 'shadow-cyan-500/20' };
+  };
+
   const getPositionColor = (position: string) => {
     if (position.includes('Lead')) return 'text-anant-accent';
     if (position.includes('Senior')) return 'text-yellow-400';
@@ -126,9 +169,10 @@ const Team = () => {
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6 text-anant-pure">
+            <h2 className="text-4xl md:text-5xl font-bold mb-2 title-caps title-gradient font-heading inline-block">
               Our Team
             </h2>
+            <div className="title-underline mb-10"></div>
             <p className="text-xl text-anant-mild max-w-3xl mx-auto">
               Meet the passionate individuals behind Team Anant's compact hyperspectral imaging CubeSat mission
             </p>
@@ -139,37 +183,37 @@ const Team = () => {
             <img 
               src="/assets/images1/team-anant-picture.jpg" 
               alt="Team Anant Group Photo" 
-              className="w-full max-w-4xl mx-auto rounded-lg shadow-2xl"
+              className="w-full max-w-4xl mx-auto rounded-xl shadow-xl ring-1 ring-white/10"
             />
           </div>
 
           {/* Team Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16 max-w-4xl mx-auto">
+            <div className="text-center p-6 rounded-lg sleek-card">
               <div className="text-3xl font-bold text-anant-accent mb-2">60+</div>
               <div className="text-anant-mild">Team Members</div>
             </div>
-            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+            <div className="text-center p-6 rounded-lg sleek-card">
               <div className="text-3xl font-bold text-anant-accent mb-2">6</div>
               <div className="text-anant-mild">Subsystems</div>
             </div>
-            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+            <div className="text-center p-6 rounded-lg sleek-card">
               <div className="text-3xl font-bold text-anant-accent mb-2">12+</div>
               <div className="text-anant-mild">Years Experience</div>
             </div>
-            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+            <div className="text-center p-6 rounded-lg sleek-card">
               <div className="text-3xl font-bold text-anant-accent mb-2">3U</div>
               <div className="text-anant-mild">CubeSat</div>
             </div>
           </div>
 
-          {/* Faculty Coordinator */}
+      {/* Faculty Coordinator */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-anant-pure mb-8 text-center">Faculty Coordinator</h3>
             <div className="flex justify-center">
-              <div className="rounded-lg p-8 hover:transform hover:scale-105 transition-all duration-300 group max-w-sm border border-white/10 bg-white/5 backdrop-blur-sm">
+        <div className="rounded-lg p-8 hover:transform hover:scale-105 transition-all duration-300 group max-w-sm">
                 <div className="text-center">
-                  <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-anant-accent">
+                  <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden ring-2 ring-cyan-400/50 shadow-md shadow-cyan-500/20">
                     <img
                       src={teamData.faculty.image}
                       alt={teamData.faculty.name}
@@ -192,14 +236,14 @@ const Team = () => {
           {/* Leadership Team */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-anant-pure mb-8 text-center">Leadership Team</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto justify-items-center">
               {teamData.leads.map((member, index) => (
                 <div
                   key={index}
-                  className="rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group border border-white/10 bg-white/5 backdrop-blur-sm"
+      className="rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group"
                 >
                   <div className="text-center">
-                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
+                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-cyan-400/40">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -221,7 +265,7 @@ const Team = () => {
           </div>
 
           {/* Subsystem Teams */}
-          <div className="space-y-12">
+          <div className="space-y-10 max-w-6xl mx-auto">
             {teamData.subsystems.map((subsystem, subsystemIndex) => {
               // Separate senior members from regular members
               const seniorMembers = subsystem.members.filter(member => 
@@ -231,43 +275,24 @@ const Team = () => {
                 !member.position.includes('Senior') && !member.position.includes('Lead')
               );
 
-              // Map subsystem names to route paths
-              const getSubsystemRoute = (name: string) => {
-                const routeMap: { [key: string]: string } = {
-                  'Attitude Determination and Control System': '/teams/adcs',
-                  'Electrical Power System': '/teams/eps',
-                  'On Board Computer System': '/teams/obc',
-                  'Payload Subsystem': '/teams/payload',
-                  'Structural and Thermal Subsystem': '/teams/sts',
-                  'Telemetry, Tracking and Command Subsystem': '/teams/ttc'
-                };
-                return routeMap[name] || '#';
-              };
               
+              const styles = getSubsystemStyle(subsystem.name);
               return (
-                <div key={subsystemIndex} className="rounded-lg p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
-                  <div className="flex justify-between items-center mb-6">
-                    <h3 className="text-2xl font-bold text-anant-pure text-center flex-1">{subsystem.name}</h3>
-                    <a
-                      href={getSubsystemRoute(subsystem.name)}
-                      className="ml-4 px-4 py-2 bg-anant-accent hover:bg-anant-accent-hover text-anant-pure rounded-lg transition-colors font-semibold text-sm"
-                    >
-                      View Full Team →
-                    </a>
-                  </div>
+                <section key={subsystemIndex} className="pt-4 border-t border-white/10 first:border-t-0">
+                  <h3 className="text-2xl font-bold text-anant-pure text-center mb-6">{subsystem.name}</h3>
                   
                   {/* Senior Members Row */}
                   {seniorMembers.length > 0 && (
                     <div className="mb-8">
                       <h4 className="text-lg font-semibold text-anant-accent mb-4 text-center">Senior Members & Leads</h4>
-                      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                      <div className="flex flex-wrap justify-center gap-4">
                         {seniorMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem] border border-white/10 bg-white/5 backdrop-blur-sm"
+                            className="p-2 group w-[9rem]"
                           >
                             <div className="text-center">
-                              <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
+                              <div className={`w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden ring-2 ${member.position.includes('Lead') ? styles.ring : 'ring-white/15'} shadow-md ${member.position.includes('Lead') ? styles.glow : ''}`}>
                                 <img
                                   src={member.image}
                                   alt={member.name}
@@ -281,7 +306,13 @@ const Team = () => {
                                 />
                               </div>
                               <h4 className="text-sm font-bold text-anant-pure mb-1">{member.name}</h4>
-                              <p className={`text-xs font-semibold ${getPositionColor(member.position)}`}>{member.position}</p>
+                              {member.position.includes('Lead') ? (
+                                <p className={`text-[11px] font-semibold inline-flex items-center justify-center px-2 py-0.5 rounded ${styles.badgeBg} ${styles.text}`}>
+                                  {member.position}
+                                </p>
+                              ) : (
+                                <p className={`text-xs font-semibold ${getPositionColor(member.position)}`}>{member.position}</p>
+                              )}
                             </div>
                           </div>
                         ))}
@@ -293,14 +324,14 @@ const Team = () => {
                   {regularMembers.length > 0 && (
                     <div>
                       <h4 className="text-lg font-semibold text-anant-mild mb-4 text-center">Team Members</h4>
-                      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
+                      <div className="flex flex-wrap justify-center gap-4">
                         {regularMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem] border border-white/10 bg-white/5 backdrop-blur-sm"
+                            className="p-2 group w-[9rem]"
                           >
                             <div className="text-center">
-                              <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
+                              <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden ring-2 ring-white/15">
                                 <img
                                   src={member.image}
                                   alt={member.name}
@@ -321,13 +352,13 @@ const Team = () => {
                       </div>
                     </div>
                   )}
-                </div>
+                </section>
               );
             })}
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16 p-8 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
+          <div className="text-center mt-16 p-8 rounded-lg space-card max-w-4xl mx-auto">
             <h3 className="text-2xl font-bold text-anant-pure mb-4">
               Interested in Joining Team Anant?
             </h3>
@@ -338,13 +369,13 @@ const Team = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
                 href="#contact"
-                className="px-8 py-3 bg-anant-accent hover:bg-anant-accent-hover text-anant-pure rounded-lg transition-colors font-semibold"
+                className="px-8 py-3 btn-primary font-semibold"
               >
                 Contact Us
               </a>
               <a
                 href="#about"
-                className="px-8 py-3 border-2 border-anant-accent text-anant-accent hover:bg-anant-accent hover:text-anant-pure rounded-lg transition-all font-semibold"
+                className="px-8 py-3 btn-outline font-semibold"
               >
                 Learn More
               </a>

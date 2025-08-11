@@ -23,9 +23,10 @@ const Hero = () => {
           </div>
         </div>
 
-        <h1 className="text-[2rem] md:text-5xl font-semibold font-poppins mb-3 md:mb-4 text-white">
+  <h1 className="hero-title-xl font-semibold mb-2 md:mb-3 title-caps title-gradient font-heading">
           Team Anant
         </h1>
+        <div className="title-underline"></div>
 
         <div className="h-px w-24 mx-auto mb-5 md:mb-6 bg-white/15" />
 
