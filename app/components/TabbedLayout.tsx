@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router';
 import Hero from './Hero';
 import About from './About';
 import Subsystems from './Subsystems';
@@ -23,19 +24,17 @@ const TabbedLayout = () => {
   ];
 
   const [activeTab, setActiveTab] = useState('hero');
+  const location = useLocation();
 
-  // Sync active tab with URL hash
+  // Sync active tab with router location.hash (handles Link navigations)
   useEffect(() => {
-    const applyHash = () => {
-      const hash = typeof window !== 'undefined' ? window.location.hash.replace('#', '') : '';
-      if (hash && tabs.some(t => t.id === hash)) {
-        setActiveTab(hash);
-      }
-    };
-    applyHash();
-    window.addEventListener('hashchange', applyHash);
-    return () => window.removeEventListener('hashchange', applyHash);
-  }, []);
+    const hash = (location.hash || '').replace('#', '') || 'hero';
+    if (tabs.some((t) => t.id === hash)) {
+      setActiveTab(hash);
+    } else {
+      setActiveTab('hero');
+    }
+  }, [location.hash]);
 
   const handleTabClick = (id: string) => {
     setActiveTab(id);
@@ -48,29 +47,8 @@ const TabbedLayout = () => {
   const ActiveComponent = activeComponent || Hero;
 
   return (
-    <div className="min-h-screen bg-anant-dark pb-16 md:pb-24">
-      {/* Tab Navigation */}
-      <nav className="sticky top-0 z-50 bg-anant-dark/95 backdrop-blur-md border-b border-anant-accent/20">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center space-x-1 md:space-x-4 py-4">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                onClick={() => handleTabClick(tab.id)}
-                className={`px-4 md:px-6 py-2 md:py-3 rounded-lg font-semibold text-sm md:text-base transition-all duration-300 ${
-                  activeTab === tab.id
-                    ? 'bg-anant-accent text-anant-pure shadow-lg transform scale-105'
-                    : 'text-anant-mild hover:text-anant-accent hover:bg-anant-gray/50'
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </nav>
-
-      {/* Tab Content */}
+  <div className="min-h-screen bg-transparent pt-14 md:pt-16 pb-8 md:pb-12">
+      {/* Tab Content Only (header provides navigation) */}
       <div className="tab-content">
         <ActiveComponent />
       </div>

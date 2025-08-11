@@ -102,7 +102,7 @@ const Subsystems = () => {
   ];
 
   return (
-    <section id="subsystems" className="py-16 bg-anant-dark">
+    <section id="subsystems" className="py-16 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -129,7 +129,7 @@ const Subsystems = () => {
               <Link
                 key={index}
                 to={subsystem.link}
-                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-anant-primary/40 hover:bg-anant-primary/60 transition-all duration-300 shadow-md hover:shadow-xl"
+                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-300 shadow-md hover:shadow-xl"
               >
                 {/* Top illustration band */}
                 <div className={`relative h-40 md:h-48 bg-gradient-to-br ${subsystem.color}`}>
@@ -143,7 +143,7 @@ const Subsystems = () => {
                 </div>
 
                 {/* Bottom content */}
-                <div className="bg-anant-dark/95 p-5 md:p-6">
+                <div className="p-5 md:p-6">
                   <div className="mb-2">
                     <h3 className="text-xl md:text-2xl font-semibold text-anant-pure leading-tight">{subsystem.name}</h3>
                     <p className="text-anant-mild text-xs md:text-sm">{subsystem.fullName}</p>

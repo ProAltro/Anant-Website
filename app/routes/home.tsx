@@ -13,7 +13,7 @@ export function meta({}: Route.MetaArgs) {
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-anant-dark">
+    <div className="min-h-screen bg-transparent">
       <Header />
       <TabbedLayout />
       <Footer />

@@ -29,7 +29,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-anant-primary">
+    <section id="contact" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -122,7 +122,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-anant-dark p-8 rounded-lg">
+            <div className="p-8 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <h3 className="text-2xl font-bold text-anant-pure mb-6">
                 Send us a Message
               </h3>

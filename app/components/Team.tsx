@@ -121,7 +121,7 @@ const Team = () => {
   };
 
   return (
-    <section id="team" className="py-20 bg-anant-primary">
+    <section id="team" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
@@ -145,19 +145,19 @@ const Team = () => {
 
           {/* Team Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-            <div className="text-center bg-anant-gray p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">60+</div>
               <div className="text-anant-mild">Team Members</div>
             </div>
-            <div className="text-center bg-anant-gray p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">6</div>
               <div className="text-anant-mild">Subsystems</div>
             </div>
-            <div className="text-center bg-anant-gray p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">12+</div>
               <div className="text-anant-mild">Years Experience</div>
             </div>
-            <div className="text-center bg-anant-gray p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">3U</div>
               <div className="text-anant-mild">CubeSat</div>
             </div>
@@ -167,7 +167,7 @@ const Team = () => {
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-anant-pure mb-8 text-center">Faculty Coordinator</h3>
             <div className="flex justify-center">
-              <div className="bg-anant-gray rounded-lg p-8 hover:transform hover:scale-105 transition-all duration-300 group max-w-sm">
+              <div className="rounded-lg p-8 hover:transform hover:scale-105 transition-all duration-300 group max-w-sm border border-white/10 bg-white/5 backdrop-blur-sm">
                 <div className="text-center">
                   <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden bg-anant-accent">
                     <img
@@ -196,7 +196,7 @@ const Team = () => {
               {teamData.leads.map((member, index) => (
                 <div
                   key={index}
-                  className="bg-anant-gray rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group"
+                  className="rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group border border-white/10 bg-white/5 backdrop-blur-sm"
                 >
                   <div className="text-center">
                     <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
@@ -245,7 +245,7 @@ const Team = () => {
               };
               
               return (
-                <div key={subsystemIndex} className="bg-anant-dark rounded-lg p-8">
+                <div key={subsystemIndex} className="rounded-lg p-8 border border-white/10 bg-white/5 backdrop-blur-sm">
                   <div className="flex justify-between items-center mb-6">
                     <h3 className="text-2xl font-bold text-anant-pure text-center flex-1">{subsystem.name}</h3>
                     <a
@@ -264,7 +264,7 @@ const Team = () => {
                         {seniorMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="bg-anant-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem]"
+                            className="rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem] border border-white/10 bg-white/5 backdrop-blur-sm"
                           >
                             <div className="text-center">
                               <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
@@ -297,7 +297,7 @@ const Team = () => {
                         {regularMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="bg-anant-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem]"
+                            className="rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem] border border-white/10 bg-white/5 backdrop-blur-sm"
                           >
                             <div className="text-center">
                               <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
@@ -327,7 +327,7 @@ const Team = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center mt-16 bg-anant-dark p-8 rounded-lg">
+          <div className="text-center mt-16 p-8 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-anant-pure mb-4">
               Interested in Joining Team Anant?
             </h3>

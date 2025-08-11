@@ -1,100 +1,73 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import React, { useMemo, useState } from 'react';
+import { Link, useLocation } from 'react-router';
 
 const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [subsOpen, setSubsOpen] = useState(false);
+  const location = useLocation();
+  const activeHash = location.hash || '#hero';
+  const path = location.pathname || '/';
+  const isSubsystems = useMemo(() => path.startsWith('/subsystems'), [path]);
+  const isTeams = useMemo(() => path.startsWith('/teams'), [path]);
+
+  const goTo = (id: string) => {
+    if (typeof window !== 'undefined') {
+      window.location.hash = id;
+    }
+    setMobileOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-nav">
-      <div className="container mx-auto px-4">
-        <nav className="flex items-center justify-between py-4">
-          {/* Logo */}
+  <header className="fixed top-0 left-0 right-0 z-[100] glass-nav nav-accented h-14 md:h-16">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-6">
+        <nav className="flex items-center justify-between h-full">
+      {/* Logo */}
           <div className="flex items-center">
-            <div className="relative">
-              <img
-                src="/assets/logos/anant-logo.png"
+            <Link to="/#hero" className="relative inline-block group" aria-label="Team Anant Home">
+                    <img
+                      src="/assets/logos/anant-logo.png"
                 alt="Team Anant Logo"
-                className="h-12 w-auto transition-all duration-300 hover:scale-110 drop-shadow-lg"
+                className="h-10 md:h-12 w-auto transition-transform duration-300 hover:scale-110 drop-shadow-lg"
               />
-              <div className="absolute inset-0 bg-anant-accent/20 rounded-full blur-xl opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
+              <div className="absolute inset-0 bg-anant-accent/20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#home" className="relative group">
-              <span className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                Home
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-            </a>
-            <a href="#about" className="relative group">
-              <span className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                About
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-            </a>
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            <Link to="/#hero" className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${activeHash === '#hero' ? 'is-active' : ''}`}>Home</Link>
+            <Link to="/#about" className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${activeHash === '#about' ? 'is-active' : ''}`}>About</Link>
+            {/* Subsystems dropdown with hover-bridge to prevent flicker */}
             <div className="relative group">
-              <button className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                Subsystems
+              <div className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${(activeHash === '#subsystems' || isSubsystems) ? 'is-active' : ''}`}>
+                <Link to="/#subsystems" className="flex items-center">Subsystems</Link>
                 <svg className="w-4 h-4 ml-1 inline-block transition-transform duration-300 group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </button>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-              <div className="absolute top-full left-0 mt-2 w-56 glass-container opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-1">
-                <div className="py-2">
-                  <Link to="/subsystems/eps" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 rounded-t-lg font-medium">
+              </div>
+              {/* Hover bridge: pt-3 creates a safe area between button and menu */}
+              <div className="absolute left-0 top-full pt-2 w-64 md:w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto z-[110]">
+                <div className="nav-popover p-2 rounded-xl">
+                  <Link to="/subsystems/eps" className="nav-item rounded-t-lg">
                     EPS
-                    <span className="block text-xs text-anant-mild mt-1">Electrical Power System</span>
+                    <small>Electrical Power System</small>
                   </Link>
-                  <Link to="/subsystems/obc" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 font-medium">
-                    OBC
-                    <span className="block text-xs text-anant-mild mt-1">On-Board Computer</span>
-                  </Link>
-                  <Link to="/subsystems/ttc" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 font-medium">
-                    TTC
-                    <span className="block text-xs text-anant-mild mt-1">Telemetry & Tracking</span>
-                  </Link>
-                  <Link to="/subsystems/adcs" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 font-medium">
-                    ADCS
-                    <span className="block text-xs text-anant-mild mt-1">Attitude Determination</span>
-                  </Link>
-                  <Link to="/subsystems/sts" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 font-medium">
-                    STS
-                    <span className="block text-xs text-anant-mild mt-1">Structural System</span>
-                  </Link>
-                  <Link to="/subsystems/payload" className="block px-4 py-3 text-white hover:bg-anant-accent/20 hover:text-anant-accent-light transition-all duration-200 rounded-b-lg font-medium">
-                    Payload
-                    <span className="block text-xs text-anant-mild mt-1">Mission Payload</span>
-                  </Link>
+                  <Link to="/subsystems/obc" className="nav-item">OBC<small>On-Board Computer</small></Link>
+                  <Link to="/subsystems/ttc" className="nav-item">TTC<small>Telemetry & Tracking</small></Link>
+                  <Link to="/subsystems/adcs" className="nav-item">ADCS<small>Attitude Determination</small></Link>
+                  <Link to="/subsystems/sts" className="nav-item">STS<small>Structural System</small></Link>
+                  <Link to="/subsystems/payload" className="nav-item rounded-b-lg">Payload<small>Mission Payload</small></Link>
                 </div>
               </div>
             </div>
-            <a href="#team" className="relative group">
-              <span className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                Team
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-            </a>
-            <a href="#publications" className="relative group">
-              <span className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                Publications
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-            </a>
-            <a href="#contact" className="relative group">
-              <span className="text-white hover:text-anant-accent-light transition-all duration-300 font-medium">
-                Contact
-              </span>
-              <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-anant-accent to-anant-accent-light transition-all duration-300 group-hover:w-full"></div>
-            </a>
+            <Link to="/#team" className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${(activeHash === '#team' || isTeams) ? 'is-active' : ''}`}>Team</Link>
+            <Link to="/#publications" className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${activeHash === '#publications' ? 'is-active' : ''}`}>Publications</Link>
+            <Link to="/#contact" className={`nav-link font-medium px-2.5 py-1.5 rounded-md hover:bg-white/5 flex items-center text-[14px] md:text-[15px] ${activeHash === '#contact' ? 'is-active' : ''}`}>Contact</Link>
           </div>
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden text-white hover:text-anant-accent-light transition-all duration-300 p-2 rounded-lg metallic-button"
+            className="md:hidden text-anant-accent-light hover:text-white bg-anant-accent/20 hover:bg-anant-accent/30 border border-anant-accent/40 rounded-xl p-2 transition-colors shadow-glow"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -114,12 +87,12 @@ const Header = () => {
 
         {/* Mobile Menu Panel */}
         {mobileOpen && (
-          <div id="mobile-menu" className="md:hidden mt-2 glass-container rounded-xl overflow-hidden">
-            <div className="p-2 divide-y divide-white/10">
-              <a href="#home" className="block px-4 py-3 text-white hover:bg-white/5 rounded-lg">Home</a>
-              <a href="#about" className="block px-4 py-3 text-white hover:bg-white/5 rounded-lg">About</a>
+          <div id="mobile-menu" className="md:hidden mt-2 sleek-container rounded-2xl overflow-hidden">
+            <div className="p-3 divide-y divide-white/10">
+              <Link to="/#hero" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Home</Link>
+              <Link to="/#about" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">About</Link>
               <button
-                className="w-full text-left px-4 py-3 text-white hover:bg-white/5 rounded-lg flex items-center justify-between"
+                className="w-full text-left px-4 py-3.5 text-white hover:bg-white/5 rounded-lg flex items-center justify-between text-base"
                 onClick={() => setSubsOpen((v) => !v)}
                 aria-expanded={subsOpen}
               >
@@ -129,18 +102,18 @@ const Header = () => {
                 </svg>
               </button>
               {subsOpen && (
-                <div className="px-2 pb-2 grid grid-cols-1 sm:grid-cols-2 gap-1">
-                  <Link to="/subsystems/eps" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">EPS</Link>
-                  <Link to="/subsystems/obc" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">OBC</Link>
-                  <Link to="/subsystems/ttc" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">TTC</Link>
-                  <Link to="/subsystems/adcs" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">ADCS</Link>
-                  <Link to="/subsystems/sts" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">STS</Link>
-                  <Link to="/subsystems/payload" className="block px-3 py-2 text-white/90 hover:text-white hover:bg-white/5 rounded-md">Payload</Link>
+                <div className="px-2 pb-2 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                  <Link to="/subsystems/eps" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">EPS</Link>
+                  <Link to="/subsystems/obc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">OBC</Link>
+                  <Link to="/subsystems/ttc" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">TTC</Link>
+                  <Link to="/subsystems/adcs" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">ADCS</Link>
+                  <Link to="/subsystems/sts" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">STS</Link>
+                  <Link to="/subsystems/payload" onClick={() => setMobileOpen(false)} className="block px-3 py-2.5 text-white/90 hover:text-white hover:bg-white/5 rounded-md text-base">Payload</Link>
                 </div>
               )}
-              <a href="#team" className="block px-4 py-3 text-white hover:bg-white/5 rounded-lg">Team</a>
-              <a href="#publications" className="block px-4 py-3 text-white hover:bg-white/5 rounded-lg">Publications</a>
-              <a href="#contact" className="block px-4 py-3 text-white hover:bg-white/5 rounded-lg">Contact</a>
+              <Link to="/#team" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Team</Link>
+              <Link to="/#publications" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Publications</Link>
+              <Link to="/#contact" onClick={() => setMobileOpen(false)} className="block px-4 py-3.5 text-white hover:bg-white/5 rounded-lg text-base">Contact</Link>
             </div>
           </div>
         )}

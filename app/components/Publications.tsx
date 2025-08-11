@@ -73,7 +73,7 @@ const Publications = () => {
   };
 
   return (
-    <section id="publications" className="py-20 bg-anant-dark">
+    <section id="publications" className="py-20 bg-transparent">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -88,19 +88,19 @@ const Publications = () => {
 
           {/* Publications Stats */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16">
-            <div className="text-center bg-anant-primary p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">15+</div>
               <div className="text-anant-mild">Total Papers</div>
             </div>
-            <div className="text-center bg-anant-primary p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">8</div>
               <div className="text-anant-mild">Conference Papers</div>
             </div>
-            <div className="text-center bg-anant-primary p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">4</div>
               <div className="text-anant-mild">Journal Articles</div>
             </div>
-            <div className="text-center bg-anant-primary p-6 rounded-lg">
+            <div className="text-center p-6 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
               <div className="text-3xl font-bold text-anant-accent mb-2">3</div>
               <div className="text-anant-mild">Technical Reports</div>
             </div>
@@ -111,7 +111,7 @@ const Publications = () => {
             {publications.map((publication, index) => (
               <div
                 key={index}
-                className="bg-anant-primary rounded-lg p-6 hover:transform hover:scale-102 transition-all duration-300 group border border-anant-gray hover:border-anant-accent"
+                className="rounded-lg p-6 hover:transform hover:scale-102 transition-all duration-300 group border border-white/10 hover:border-sky-400/40 bg-white/5 backdrop-blur-sm"
               >
                 <div className="flex flex-col md:flex-row md:items-start gap-4">
                   {/* Content */}
@@ -163,7 +163,7 @@ const Publications = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="text-center bg-anant-primary p-8 rounded-lg">
+          <div className="text-center p-8 rounded-lg border border-white/10 bg-white/5 backdrop-blur-sm">
             <h3 className="text-2xl font-bold text-anant-pure mb-4">
               Interested in Collaborating?
             </h3>
