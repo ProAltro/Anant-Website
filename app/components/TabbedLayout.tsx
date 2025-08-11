@@ -46,8 +46,22 @@ const TabbedLayout = () => {
   const activeComponent = tabs.find(tab => tab.id === activeTab)?.component;
   const ActiveComponent = activeComponent || Hero;
 
+  // When switching to the hero tab (especially after a route change), ensure we scroll to the very top
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isHome = (location.pathname || '/') === '/';
+      const onHero = activeTab === 'hero';
+      if (isHome && onHero) {
+        // Use instant jump to avoid visible jank during page transition
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }
+    }
+  }, [activeTab, location.pathname]);
+
+  const topPad = activeTab === 'hero' ? 'pt-0' : 'pt-14 md:pt-16';
+
   return (
-  <div className="min-h-screen bg-transparent pt-14 md:pt-16 pb-8 md:pb-12">
+    <div className={`min-h-screen bg-transparent ${topPad} pb-8 md:pb-12`}>
       {/* Tab Content Only (header provides navigation) */}
       <div className="tab-content">
         <ActiveComponent />

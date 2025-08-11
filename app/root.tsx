@@ -5,7 +5,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLocation,
 } from "react-router";
+import { AnimatePresence, motion } from "framer-motion";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -36,7 +38,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <div className="space-bg" aria-hidden="true"></div>
         {children}
-        <ScrollRestoration />
+        <ScrollRestoration getKey={(loc) => `${loc.pathname}${loc.hash || ''}`} />
         <Scripts />
       </body>
     </html>
@@ -44,7 +46,40 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  const location = useLocation();
+  const isHomeHero = (location.pathname || '/') === '/' && (!location.hash || location.hash === '#hero');
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      {/* Perspective wrapper for subtle 3D tilt */}
+      <div style={{ perspective: 1200 }}>
+        {/* Sweep line accent */}
+        <motion.div
+          key={location.pathname + location.hash + "-sweep"}
+          className="fixed top-0 left-0 right-0 h-[2px] bg-cyan-400/60 z-[90]"
+          style={{ transformOrigin: '0% 50%' }}
+          initial={{ scaleX: 0, opacity: 0.8 }}
+          animate={{ scaleX: 0, opacity: 0 }}
+          exit={{ scaleX: 1, opacity: 1 }}
+          transition={{ duration: 0.28, ease: [0.4, 0.0, 0.2, 1] }}
+        />
+        <motion.div
+          key={location.pathname + location.hash}
+          initial={{
+            opacity: 0,
+            y: isHomeHero ? 0 : 22,
+            scale: isHomeHero ? 1 : 0.985,
+            rotateX: isHomeHero ? 0 : -3,
+            filter: isHomeHero ? 'blur(0px) saturate(1)' : 'blur(8px) saturate(0.9)'
+          }}
+          animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0, filter: 'blur(0px) saturate(1)' }}
+          exit={{ opacity: 0, y: -16, scale: 0.992, rotateX: 2, filter: 'blur(6px) saturate(0.95)' }}
+          transition={{ type: 'spring', stiffness: 220, damping: 26, mass: 0.9 }}
+        >
+          <Outlet />
+        </motion.div>
+      </div>
+    </AnimatePresence>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {

@@ -3,8 +3,8 @@ import React from 'react';
 const Hero = () => {
   const goTo = (hash: string) => {
     if (typeof window !== 'undefined') {
-      window.location.hash = hash;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Update hash and let browser scroll to the anchor; sections have scroll-margin to account for fixed header
+    window.location.hash = hash;
     }
   };
 

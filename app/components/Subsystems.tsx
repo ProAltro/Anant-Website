@@ -102,7 +102,7 @@ const Subsystems = () => {
   ];
 
   return (
-    <section id="subsystems" className="py-16 bg-transparent">
+  <section id="subsystems" className="py-16 bg-transparent scroll-mt-14 md:scroll-mt-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}

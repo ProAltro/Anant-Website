@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
   return (
-  <section id="about" className="py-16 bg-transparent">
+  <section id="about" className="py-16 bg-transparent scroll-mt-14 md:scroll-mt-16">
       <div className="container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Header */}

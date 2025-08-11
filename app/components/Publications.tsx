@@ -73,7 +73,7 @@ const Publications = () => {
   };
 
   return (
-    <section id="publications" className="py-20 bg-transparent">
+    <section id="publications" className="py-20 bg-transparent scroll-mt-14 md:scroll-mt-16">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
