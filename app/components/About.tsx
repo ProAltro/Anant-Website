@@ -12,7 +12,7 @@ const About = () => {
             </h2>
             <div className="metallic-divider w-24 mx-auto mb-8"></div>
             <p className="text-xl text-anant-mild max-w-3xl mx-auto leading-relaxed">
-              BITS Pilani Student Satellite Team pioneering biological experiments in space through innovative nanosatellite technology
+              BITS Pilani Student Satellite Team pioneering hyperspectral imaging on a nanosatellite platform
             </p>
           </div>
 
@@ -24,14 +24,14 @@ const About = () => {
                 Our Mission
               </h3>
               <p className="text-anant-mild leading-relaxed text-lg">
-                Team Anant is developing BITS Pilani's first student satellite to demonstrate biological experiments 
-                in space. Our current mission focuses on studying the growth behavior of Cutibacterium acnes in a 
-                controlled microgravity environment using a cost-effective, miniaturized lab-on-chip platform.
+                Team Anant is developing BITS Pilani's first student satellite to demonstrate a compact
+                hyperspectral imaging payload in orbit. The mission targets cost‑effective acquisition of
+                rich spectral data suitable for remote sensing applications.
               </p>
               <p className="text-anant-mild leading-relaxed text-lg">
                 Since 2013, following leading global universities, BITS Pilani has been pioneering space technology 
                 through Project Anant. Our mission combines hands-on satellite development experience with 
-                cutting-edge biological research to advance space-based biomedical applications.
+                a practical imaging instrument to advance low‑cost Earth observation.
               </p>
               
               <div className="glassy-card p-6 mt-8">
@@ -39,32 +39,32 @@ const About = () => {
                 <ul className="text-anant-mild space-y-2 text-base">
                   <li className="flex items-start">
                     <span className="text-anant-accent mr-2">•</span>
-                    Demonstrate microfluidic biological experiments in microgravity
+                    Demonstrate compact hyperspectral imaging in LEO
                   </li>
                   <li className="flex items-start">
                     <span className="text-anant-accent mr-2">•</span>
-                    Study bacterial growth using fluorescence-based detection
+                    Validate onboard compression feasibility (CCSDS‑style)
                   </li>
                   <li className="flex items-start">
                     <span className="text-anant-accent mr-2">•</span>
-                    Validate autonomous experiment control systems
+                    Enable student end‑to‑end space systems learning
                   </li>
                   <li className="flex items-start">
                     <span className="text-anant-accent mr-2">•</span>
-                    Foster multidisciplinary space technology learning
+                    Support remote sensing applications post‑downlink
                   </li>
                 </ul>
               </div>
               
               <div className="flex flex-wrap gap-4 mt-8">
                 <span className="px-4 py-2 metallic-button text-anant-pure rounded-lg text-sm font-medium">
-                  Biological Experiments
+                  Hyperspectral Imaging
                 </span>
                 <span className="px-4 py-2 metallic-button text-anant-pure rounded-lg text-sm font-medium">
-                  Microfluidic Systems
+                  Compression & Processing
                 </span>
                 <span className="px-4 py-2 metallic-button text-anant-pure rounded-lg text-sm font-medium">
-                  Microgravity Research
+                  Remote Sensing
                 </span>
               </div>
             </div>
@@ -102,6 +102,45 @@ const About = () => {
             </div>
           </div>
 
+          {/* Mission Statement (from proposal) */}
+          <div className="glassy-card p-8 mb-16">
+            <h3 className="text-3xl md:text-4xl font-semibold metallic-text font-poppins mb-4">Mission Statement</h3>
+            <p className="text-anant-mild text-lg leading-relaxed">
+              Demonstrate the feasibility of hyperspectral imaging on a nanosatellite platform using a
+              compact imager and onboard compression, enabling applications across agriculture,
+              forestry, water monitoring, disaster management, and climate research while offering a
+              comprehensive learning experience in end‑to‑end space systems.
+            </p>
+          </div>
+
+          {/* Mission Specifications Snapshot */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className="bg-anant-dark rounded-lg p-6">
+              <h4 className="text-anant-pure font-semibold mb-2">Imager</h4>
+              <ul className="text-anant-mild text-sm space-y-1">
+                <li className="flex justify-between"><span>Bands</span><span className="text-anant-accent">270</span></li>
+                <li className="flex justify-between"><span>Format</span><span className="text-anant-accent">640×480</span></li>
+                <li className="flex justify-between"><span>Bit Depth</span><span className="text-anant-accent">12‑bit</span></li>
+              </ul>
+            </div>
+            <div className="bg-anant-dark rounded-lg p-6">
+              <h4 className="text-anant-pure font-semibold mb-2">Performance</h4>
+              <ul className="text-anant-mild text-sm space-y-1">
+                <li className="flex justify-between"><span>Frame Rate</span><span className="text-anant-accent">~300 fps</span></li>
+                <li className="flex justify-between"><span>Frames/Image</span><span className="text-anant-accent">270</span></li>
+                <li className="flex justify-between"><span>Capture Time</span><span className="text-anant-accent">~0.9 s</span></li>
+              </ul>
+            </div>
+            <div className="bg-anant-dark rounded-lg p-6">
+              <h4 className="text-anant-pure font-semibold mb-2">Power & Size</h4>
+              <ul className="text-anant-mild text-sm space-y-1">
+                <li className="flex justify-between"><span>Power</span><span className="text-anant-accent">~10 W</span></li>
+                <li className="flex justify-between"><span>Mass</span><span className="text-anant-accent">&lt; 0.68 kg</span></li>
+                <li className="flex justify-between"><span>Size</span><span className="text-anant-accent">~3×3×4.7 in</span></li>
+              </ul>
+            </div>
+          </div>
+
           {/* Vision Section */}
           <div className="mt-16 text-center">
             <h3 className="text-3xl md:text-4xl font-semibold metallic-text font-poppins mb-6">
@@ -110,8 +149,7 @@ const About = () => {
             <div className="metallic-divider w-20 mx-auto mb-8"></div>
             <p className="text-anant-mild text-lg max-w-4xl mx-auto leading-relaxed">
               To establish BITS Pilani as a leading institution in nanosatellite technology and space research, 
-              while contributing to global efforts in understanding biological systems in space environments. 
-              Our work aims to pioneer cost-effective solutions for biomedical applications in extraterrestrial conditions.
+              while contributing to low‑cost Earth observation through compact imaging systems.
             </p>
             
             <div className="mt-12 grid md:grid-cols-3 gap-6">
@@ -131,7 +169,7 @@ const About = () => {
                   </svg>
                 </div>
                 <h4 className="text-anant-accent font-semibold mb-3 text-lg">Research Innovation</h4>
-                <p className="text-anant-mild text-base">Pioneering biological experiments in microgravity environments</p>
+                <p className="text-anant-mild text-base">Pioneering compact hyperspectral imaging on a student satellite</p>
               </div>
               <div className="glassy-card p-6">
                 <div className="w-12 h-12 bg-anant-accent/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -140,7 +178,7 @@ const About = () => {
                   </svg>
                 </div>
                 <h4 className="text-anant-accent font-semibold mb-3 text-lg">Space Technology</h4>
-                <p className="text-anant-mild text-base">Advancing nanosatellite systems and autonomous operations</p>
+                <p className="text-anant-mild text-base">Advancing low‑cost Earth observation from CubeSats</p>
               </div>
             </div>
           </div>

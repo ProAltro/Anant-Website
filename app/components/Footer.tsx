@@ -69,33 +69,33 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Subsystems</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/subsystems/aegis" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  AEGIS
+                <a href="/subsystems/adcs" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  ADCS
                 </a>
               </li>
               <li>
-                <a href="/subsystems/aurora" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  AURORA
+                <a href="/subsystems/eps" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  EPS
                 </a>
               </li>
               <li>
-                <a href="/subsystems/hermes" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  HERMES
+                <a href="/subsystems/obc" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  OBC
                 </a>
               </li>
               <li>
-                <a href="/subsystems/horizon" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  HORIZON
+                <a href="/subsystems/payload" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  Payload
                 </a>
               </li>
               <li>
-                <a href="/subsystems/nexus" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  NEXUS
+                <a href="/subsystems/sts" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  STS
                 </a>
               </li>
               <li>
-                <a href="/subsystems/spectrum" className="text-gray-400 hover:text-anant-accent transition-colors">
-                  SPECTRUM
+                <a href="/subsystems/ttc" className="text-gray-400 hover:text-anant-accent transition-colors">
+                  TTC
                 </a>
               </li>
             </ul>

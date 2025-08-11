@@ -80,138 +80,117 @@ const Subsystems = () => {
     },
     {
       name: "Payload",
-      fullName: "Biological Experiment Payload",
-      description: "Microfluidic lab-on-chip system for studying Cutibacterium acnes growth in microgravity using Doubleflow Standard Chip with fluorescence detection and real-time environmental monitoring",
+      fullName: "Hyperspectral Imaging Payload",
+      description:
+        "Compact hyperspectral camera enabling cost‑effective orbital imaging for remote sensing; 270 spectral bands, 640×480 @ 12‑bit, with on‑board compression feasibility.",
       image: "/assets/images/engines.png",
       link: "/subsystems/payload",
       color: "from-red-500 to-red-700",
-      keyFeatures: ["Microfluidic Lab-on-Chip", "Fluorescence Detection", "C. acnes Culture", "Real-time Monitoring"],
+      keyFeatures: [
+        "Hyperspectral Camera",
+        "270 Bands",
+        "Onboard Compression (CCSDS)",
+        "Remote Sensing Applications",
+      ],
       technicalSpecs: {
-        platform: "Doubleflow Standard Chip (Beonchip)",
-        detection: "488nm LED + S1336 photodiode",
-        organism: "Cutibacterium acnes bacterial culture",
-        monitoring: "Temperature, pH, fluorescence sensors"
-      }
+        bands: "270 spectral bands",
+        format: "640×480 sensor",
+        bitDepth: "12‑bit",
+        power: "~10 W imager power",
+      },
     }
   ];
 
   return (
-    <section id="subsystems" className="py-20 bg-anant-dark">
+    <section id="subsystems" className="py-16 bg-anant-dark">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-poppins mb-6 text-anant-pure">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-semibold font-poppins mb-3 text-anant-pure">
               Subsystems
             </h2>
-            <p className="text-xl text-anant-mild max-w-3xl mx-auto mb-4">
-              Six core subsystems engineered for our biological experiment mission - studying Cutibacterium acnes growth in microgravity
+            <p className="text-base text-anant-mild max-w-2xl mx-auto">
+              Core systems engineered for our mission
             </p>
-            <div className="flex justify-center space-x-8 text-sm text-anant-accent">
-              <span>• 3U CubeSat • 500km SSO • 1 Year Mission</span>
-              <span>• BITS Pilani Student Satellite Team</span>
-            </div>
           </div>
 
-          {/* Mission Overview */}
-          <div className="bg-anant-primary rounded-lg p-8 mb-12">
-            <h3 className="text-2xl font-bold text-anant-pure mb-4">Mission Overview</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="text-lg font-semibold text-anant-accent mb-2">Primary Objectives</h4>
-                <ul className="text-anant-mild space-y-1">
-                  <li>• Demonstrate biological experiment in microgravity</li>
-                  <li>• Study C. acnes growth using microfluidic platform</li>
-                  <li>• Validate autonomous experiment control systems</li>
-                  <li>• Gain LEO operational experience</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="text-lg font-semibold text-anant-accent mb-2">Mission Specifications</h4>
-                <ul className="text-anant-mild space-y-1">
-                  <li>• <span className="text-anant-accent">Orbit:</span> 500km Polar Sun Synchronous</li>
-                  <li>• <span className="text-anant-accent">Mass:</span> &lt;3kg bus + &lt;0.5kg payload</li>
-                  <li>• <span className="text-anant-accent">Size:</span> 3U CubeSat (100×100×300mm)</li>
-                  <li>• <span className="text-anant-accent">Mission Life:</span> ~1 year</li>
-                </ul>
-              </div>
-            </div>
+          {/* Mission banner */}
+          <div className="glassy-card p-6 mb-8 text-center">
+            <p className="text-anant-mild text-sm md:text-base">
+              Enabling a cost‑effective hyperspectral imaging mission while providing a hands‑on, end‑to‑end
+              education in space systems engineering for students at BITS Pilani.
+            </p>
           </div>
 
-          {/* Subsystems Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {/* Subsystems Grid - detailed cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {subsystems.map((subsystem, index) => (
               <Link
                 key={index}
                 to={subsystem.link}
-                className="group relative bg-anant-primary rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer block"
+                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-anant-primary/40 hover:bg-anant-primary/60 transition-all duration-300 shadow-md hover:shadow-xl"
               >
-                {/* Background Image */}
-                <div className="h-80 bg-gradient-to-br from-anant-primary to-anant-gray relative overflow-hidden">
+                {/* Top illustration band */}
+                <div className={`relative h-40 md:h-48 bg-gradient-to-br ${subsystem.color}`}>
                   <img
                     src={subsystem.image}
-                    alt={subsystem.name}
-                    className="w-full h-full object-contain p-2 group-hover:scale-110 transition-transform duration-300"
+                    alt={`${subsystem.name} Illustration`}
+                    className="absolute right-3 md:right-5 bottom-0 h-28 md:h-36 opacity-90 drop-shadow-xl mix-blend-screen pointer-events-none transition-transform duration-300 group-hover:translate-y-[-4px]"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-anant-dark/80 to-transparent"></div>
-                  
-                  {/* Overlay gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${subsystem.color} opacity-20 group-hover:opacity-30 transition-opacity duration-300`}></div>
+                  <div className="absolute inset-0 bg-black/10"></div>
+                  <div className="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.6),_transparent_60%)]"></div>
                 </div>
 
-                {/* Content */}
-                <div className="p-6">
-                  <div className="mb-3">
-                    <h3 className="text-2xl font-bold font-poppins text-anant-pure group-hover:text-anant-accent transition-colors">
-                      {subsystem.name}
-                    </h3>
-                    <p className="text-anant-accent text-sm font-medium">
-                      {subsystem.fullName}
-                    </p>
+                {/* Bottom content */}
+                <div className="bg-anant-dark/95 p-5 md:p-6">
+                  <div className="mb-2">
+                    <h3 className="text-xl md:text-2xl font-semibold text-anant-pure leading-tight">{subsystem.name}</h3>
+                    <p className="text-anant-mild text-xs md:text-sm">{subsystem.fullName}</p>
                   </div>
-                  <p className="text-anant-mild leading-relaxed mb-4">
+
+                  <p className="text-anant-mild/90 text-sm leading-relaxed mt-3">
                     {subsystem.description}
                   </p>
-                  
-                  {/* Key Features */}
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-anant-pure mb-2">Key Features:</h4>
-                    <div className="flex flex-wrap gap-1">
-                      {subsystem.keyFeatures.map((feature, idx) => (
-                        <span key={idx} className="text-xs bg-anant-gray text-anant-mild px-2 py-1 rounded">
-                          {feature}
+
+                  {/* Key features chips */}
+                  <div className="mt-4">
+                    <h4 className="text-anant-pure/80 text-xs uppercase tracking-wider">Key Features:</h4>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {subsystem.keyFeatures.slice(0, 6).map((feat: string, i: number) => (
+                        <span
+                          key={i}
+                          className="text-[11px] md:text-xs px-2 py-1 rounded-md border border-white/10 bg-white/5 text-anant-mild group-hover:bg-white/10"
+                        >
+                          {feat}
                         </span>
                       ))}
                     </div>
                   </div>
 
-                  {/* Technical Specifications */}
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-anant-pure mb-2">Technical Specs:</h4>
-                    <div className="space-y-1">
-                      {Object.entries(subsystem.technicalSpecs).map(([key, value], idx) => (
-                        <div key={idx} className="text-xs text-anant-mild">
-                          <span className="text-anant-accent font-medium">{key}:</span> {value}
-                        </div>
+                  {/* Technical specs list */}
+                  <div className="mt-4">
+                    <h4 className="text-anant-pure/80 text-xs uppercase tracking-wider">Technical Specs:</h4>
+                    <ul className="mt-2 space-y-1">
+                      {Object.entries(subsystem.technicalSpecs).map(([k, v], i) => (
+                        <li key={i} className="text-[11px] md:text-xs text-anant-mild">
+                          <span className="uppercase text-anant-pure/70 mr-1">{k}:</span>
+                          <span>{v as string}</span>
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                  
-                  {/* Learn More Button */}
-                  <div className="flex justify-between items-center">
-                    <span className="text-anant-accent hover:text-anant-accent-hover font-semibold transition-colors">
-                      Learn More →
-                    </span>
-                    <div className="w-8 h-8 bg-anant-accent rounded-full flex items-center justify-center group-hover:bg-anant-accent-hover transition-colors">
-                      <svg className="w-4 h-4 text-anant-pure" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                  {/* CTA */}
+                  <div className="mt-4 flex items-center justify-between">
+                    <span className="text-anant-accent font-medium text-sm">Learn More →</span>
+                    <div className="w-8 h-8 rounded-full border border-anant-accent/40 text-anant-accent flex items-center justify-center group-hover:bg-anant-accent group-hover:text-anant-pure transition-colors">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
                     </div>
                   </div>
                 </div>
-
-                {/* Hover Effect Border */}
-                <div className="absolute inset-0 border-2 border-anant-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
               </Link>
             ))}
           </div>

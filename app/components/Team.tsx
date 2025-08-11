@@ -130,7 +130,7 @@ const Team = () => {
               Our Team
             </h2>
             <p className="text-xl text-anant-mild max-w-3xl mx-auto">
-              Meet the passionate individuals behind Team Anant's innovative biological experiment CubeSat mission
+              Meet the passionate individuals behind Team Anant's compact hyperspectral imaging CubeSat mission
             </p>
           </div>
 
@@ -192,14 +192,14 @@ const Team = () => {
           {/* Leadership Team */}
           <div className="mb-16">
             <h3 className="text-2xl font-bold text-anant-pure mb-8 text-center">Leadership Team</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
               {teamData.leads.map((member, index) => (
                 <div
                   key={index}
-                  className="bg-anant-gray rounded-lg p-6 hover:transform hover:scale-105 transition-all duration-300 group"
+                  className="bg-anant-gray rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group"
                 >
                   <div className="text-center">
-                    <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden bg-anant-accent">
+                    <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
                       <img
                         src={member.image}
                         alt={member.name}
@@ -230,23 +230,44 @@ const Team = () => {
               const regularMembers = subsystem.members.filter(member => 
                 !member.position.includes('Senior') && !member.position.includes('Lead')
               );
+
+              // Map subsystem names to route paths
+              const getSubsystemRoute = (name: string) => {
+                const routeMap: { [key: string]: string } = {
+                  'Attitude Determination and Control System': '/teams/adcs',
+                  'Electrical Power System': '/teams/eps',
+                  'On Board Computer System': '/teams/obc',
+                  'Payload Subsystem': '/teams/payload',
+                  'Structural and Thermal Subsystem': '/teams/sts',
+                  'Telemetry, Tracking and Command Subsystem': '/teams/ttc'
+                };
+                return routeMap[name] || '#';
+              };
               
               return (
                 <div key={subsystemIndex} className="bg-anant-dark rounded-lg p-8">
-                  <h3 className="text-2xl font-bold text-anant-pure mb-6 text-center">{subsystem.name}</h3>
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-2xl font-bold text-anant-pure text-center flex-1">{subsystem.name}</h3>
+                    <a
+                      href={getSubsystemRoute(subsystem.name)}
+                      className="ml-4 px-4 py-2 bg-anant-accent hover:bg-anant-accent-hover text-anant-pure rounded-lg transition-colors font-semibold text-sm"
+                    >
+                      View Full Team →
+                    </a>
+                  </div>
                   
                   {/* Senior Members Row */}
                   {seniorMembers.length > 0 && (
                     <div className="mb-8">
                       <h4 className="text-lg font-semibold text-anant-accent mb-4 text-center">Senior Members & Leads</h4>
-                      <div className="flex flex-wrap justify-center gap-6">
+                      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
                         {seniorMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="bg-anant-gray rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group"
+                            className="bg-anant-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem]"
                           >
                             <div className="text-center">
-                              <div className="w-20 h-20 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
+                              <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
                                 <img
                                   src={member.image}
                                   alt={member.name}
@@ -255,7 +276,7 @@ const Team = () => {
                                     const target = e.target as HTMLImageElement;
                                     target.style.display = 'none';
                                     const initials = member.name.split(' ').map((n: string) => n[0]).join('');
-                                    target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center text-anant-pure text-sm font-bold">${initials}</div>`;
+                                    target.parentElement!.innerHTML = `<div class=\"w-full h-full flex items-center justify-center text-anant-pure text-sm font-bold\">${initials}</div>`;
                                   }}
                                 />
                               </div>
@@ -268,15 +289,15 @@ const Team = () => {
                     </div>
                   )}
                   
-                  {/* Regular Members Grid */}
+                  {/* Regular Members Row */}
                   {regularMembers.length > 0 && (
                     <div>
                       <h4 className="text-lg font-semibold text-anant-mild mb-4 text-center">Team Members</h4>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                      <div className="flex flex-wrap justify-center gap-3 md:gap-4">
                         {regularMembers.map((member, memberIndex) => (
                           <div
                             key={memberIndex}
-                            className="bg-anant-gray rounded-lg p-4 hover:transform hover:scale-105 transition-all duration-300 group"
+                            className="bg-anant-gray rounded-lg p-3 hover:transform hover:scale-105 transition-all duration-300 group w-[9rem]"
                           >
                             <div className="text-center">
                               <div className="w-16 h-16 mx-auto mb-3 rounded-full overflow-hidden bg-anant-accent">
@@ -288,7 +309,7 @@ const Team = () => {
                                     const target = e.target as HTMLImageElement;
                                     target.style.display = 'none';
                                     const initials = member.name.split(' ').map((n: string) => n[0]).join('');
-                                    target.parentElement!.innerHTML = `<div class="w-full h-full flex items-center justify-center text-anant-pure text-sm font-bold">${initials}</div>`;
+                                    target.parentElement!.innerHTML = `<div class=\"w-full h-full flex items-center justify-center text-anant-pure text-sm font-bold\">${initials}</div>`;
                                   }}
                                 />
                               </div>
