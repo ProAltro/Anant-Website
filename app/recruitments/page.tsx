@@ -23,42 +23,65 @@ const recruitmentStages: Stage[] = [
   {
     id: "orientation",
     name: "Orientation",
-    date: "January 10, 2025",
-    status: "upcoming",
+    date: "January 14, 2026",
+    status: "completed",
     description: "To introduce you to our work, vision, and opportunitites for you to be a part of this journey, we are hosting an Orientation Session. Learn about the different subsystems and find where your interests align.",
     details: [
       "Introduction to Team Anant and our satellite projects",
       "Overview of all six subsystems",
       "Meet current team members and leads",
       "Q&A session for prospective members",
-      "Location: TBA"
+      "Location: LTC 5101",
+      "Joining the Anant Recruitments WhatsApp Group is mandatory to receive updates regarding the recruitment process."
     ],
     resources: [
-      { name: "Orientation Slides", url: "#" },
-      { name: "Team Overview", url: "/about" }
+      { name: "Orientation Slides", url: "/Anant Orientation 2026_complete.pdf" },
+      { name: "Team Overview", url: "/about" },
+      { name: "Resources", url: "https://docs.google.com/document/d/1P9OWGGBwnghbKJ-MV08gKG0f1u7XYaIjdFwldpma6kE/" },
+      { name: "Recruitment Form Link", url: "https://docs.google.com/forms/d/e/1FAIpQLSc-6R8pm-l6adQxe7bzccZdTuN2biaSFZa-3q8zX1PzGKEjrg/" }
     ]
   },
   {
     id: "test-1",
     name: "Round 1 Test",
-    date: "January 16, 2025",
-    status: "upcoming",
+    date: "January 17, 2026",
+    status: "current",
     description: "The first screening test to evaluate your fundamental understanding and problem-solving abilities. We hope you enjoy the paper!",
     details: [
       "Duration: 24 hours",
       "Open Internet Test",
       "You may attempt the paper for multiple subsystems.",
-      "Your current choice does not lock you into the specific vertical."
+      "Your current choice does not lock you into the specific vertical.",
+      "Joining the Anant Recruitments WhatsApp Group is mandatory to receive updates regarding the test.",
+      "If you have not been added to the Google Classroom or face any issues fill out the Issues form from the link below."
     ],
     resources: [
-      { name: "Resources", url: "#" },
+      { name: "Resources", url: "https://docs.google.com/document/d/1P9OWGGBwnghbKJ-MV08gKG0f1u7XYaIjdFwldpma6kE/" },
+      { name: "Resources Document", url: "/Anant_Recruitments_26_Resource_Doc.pdf" },
+      { name: "Recruitment Form Link", url: "https://docs.google.com/forms/d/e/1FAIpQLSc-6R8pm-l6adQxe7bzccZdTuN2biaSFZa-3q8zX1PzGKEjrg/" },
+      { name: "Issues Form", url: "https://forms.gle/qSwvhQ9s8T9xvmz46"}
+    ]
+  },
+  {
+    id: "interviews-1",
+    name: "Round 1 Interviews",
+    date: "TBA",
+    status: "upcoming",
+    description: "Personal interviews to discuss your test performance for Round 1.",
+    details: [
+      "You may be called for multiple interviews based on the subsystems you attempted.",
+      "Discussion of your answers and problem-solving approach",      
+    ],
+    resources: [
+      { name: "Resources", url: "https://docs.google.com/document/d/1P9OWGGBwnghbKJ-MV08gKG0f1u7XYaIjdFwldpma6kE/" },
+      { name: "Resources Document", url: "/Anant_Recruitments_26_Resource_Doc.pdf" },
       // { name: "Sample Questions", url: "#" }
     ]
   },
   {
-    id: "introductory-lectures",
-    name: "Introductory Lectures",
-    date: "January 28 - February 11, 2025",
+    id: "probationary-lectures",
+    name: "Probationary Lectures",
+    date: "January 28 - February 11, 2026",
     status: "upcoming",
     description: "Attend specialized lectures for each subsystem to understand the technical aspects and choose your preferred domain.",
     details: [
@@ -76,7 +99,7 @@ const recruitmentStages: Stage[] = [
   {
     id: "task-2",
     name: "Round 2 Tasks",
-    date: "February 12-19, 2025",
+    date: "TBA",
     status: "upcoming",
     description: "Complete a subsystem-specific tasks assigned during the lectures to demonstrate your understanding and technical skills.",
     details: [
@@ -86,7 +109,7 @@ const recruitmentStages: Stage[] = [
       "Mentorship available from current members"
     ],
     resources: [
-      { name: "Task Guidelines", url: "#" }
+      // { name: "Task Guidelines", url: "#" }
     ]
   },
   {
@@ -96,12 +119,12 @@ const recruitmentStages: Stage[] = [
     status: "upcoming",
     description: "One-on-one interviews to discuss the techinical skills you built up during the recruitment process",
     details: [
-      "Duration: 20-30 minutes per candidate",
       "Discussion of Task 2 submission",
       "Technical questions on chosen subsystem",
       "Assessment of teamwork and communication skills",
     ],
     resources: [
+      { name: "Subsystem Overviews", url: "/subsystems/eps" }
       // { name: "Interview Tips", url: "#" }
     ]
   }
