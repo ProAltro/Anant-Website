@@ -25,11 +25,11 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 
 const subsystems = [
-  { name: "EPS", fullName: "Electrical Power System", href: "/subsystems/eps" },
-  { name: "OBC", fullName: "On-Board Computer", href: "/subsystems/obc" },
-  { name: "TTC", fullName: "Telemetry & Tracking", href: "/subsystems/ttc" },
-  { name: "ADCS", fullName: "Attitude Determination", href: "/subsystems/adcs" },
-  { name: "STS", fullName: "Structural System", href: "/subsystems/sts" },
+  { name: "EPS", fullName: "Electrical and Power Subsystem", href: "/subsystems/eps" },
+  { name: "OBC", fullName: "On-Board Computing Subsystem", href: "/subsystems/obc" },
+  { name: "TTC", fullName: "Telemetry, Tracking and Command", href: "/subsystems/ttc" },
+  { name: "ADCS", fullName: "Attitude Determination and Controls", href: "/subsystems/adcs" },
+  { name: "STS", fullName: "Structural and Thermal Subsystem", href: "/subsystems/sts" },
   { name: "Payload", fullName: "Mission Payload", href: "/subsystems/payload" },
 ];
 

@@ -92,7 +92,7 @@ export function Hero() {
               </span>
               <span className="text-sm font-medium text-[var(--accent-teal)]">Recruitments Open!</span>
             </Link>
-          </motion.div>
+          </motion.div> 
           
           <motion.div
             whileHover={{ scale: 1.02 }}
